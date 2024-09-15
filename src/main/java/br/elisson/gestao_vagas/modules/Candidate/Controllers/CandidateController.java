@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.elisson.gestao_vagas.modules.Candidate.CandidatoEntity;
+import jakarta.validation.Valid;
 
 
 @RestController
@@ -15,7 +16,7 @@ public class CandidateController {
     
     @PostMapping("/")
 
-    public String CriarCandidatos(@RequestBody CandidatoEntity criarCandidato){
+    public String CriarCandidatos(@Valid @RequestBody CandidatoEntity criarCandidato){
          return "candidato cadastrado: " +  criarCandidato.getName() + "\n" + "candidato cadastrado: " +  criarCandidato.getUsername();
         
      
