@@ -1,5 +1,6 @@
 package br.elisson.gestao_vagas.modules.Candidate.Controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,12 +15,12 @@ import jakarta.validation.Valid;
 @RequestMapping("/Candidatos")
 public class CandidateController {
     
+    @Autowired
+    private CandidateRepository DadosDoCandidato;
     @PostMapping("/")
 
-    public String CriarCandidatos(@Valid @RequestBody CandidatoEntity criarCandidato){
-         return "candidato cadastrado: " +  criarCandidato.getName() + "\n" + "candidato cadastrado: " +  criarCandidato.getUsername();
-        
-     
+    public CandidatoEntity CriarCandidatos(@Valid @RequestBody CandidatoEntity criarCandidato){
+       return this.DadosDoCandidato.save(criarCandidato);
          
     }
 }
